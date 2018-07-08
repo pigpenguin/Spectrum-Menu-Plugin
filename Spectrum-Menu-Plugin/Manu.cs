@@ -48,6 +48,7 @@ namespace Spectrum_Menu_Plugin
             }
         }
 
+        //CreateMenu(manager, "SpectrumSettingsObject", "OptionsFrontRoot", "MainMenuFrontRoot");
         private void CreateMenu(IManager manager, string settingsObjectName, string optionsFrontRootName, string mainMenuFrontRootName)
         {
             var spectrumSettingsObject = new GameObject(settingsObjectName);
