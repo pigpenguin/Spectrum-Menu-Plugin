@@ -3,14 +3,6 @@ using System.Collections.Generic;
 
 namespace SpectrumTestPlugin
 {
-    public enum Language
-    {
-        English,
-        French,
-        German,
-        Japanese,
-        Chinese
-    }
 
     public class SpectrumSettingsMenu : SpectrumMenu
     {
@@ -19,7 +11,7 @@ namespace SpectrumTestPlugin
 
         public override bool DisplayInMenu(bool isPauseMenu) => true;
 
-        public KeyValuePair<string, Language>[] displayNames = 
+        private readonly KeyValuePair<string, Language>[] displayNames = 
             new KeyValuePair<string, Language>[] { KVP<string,Language>("English",Language.English)
                                                  , KVP<string,Language>("Français",Language.French)
                                                  , KVP<string,Language>("Deutsch",Language.German)
@@ -29,6 +21,7 @@ namespace SpectrumTestPlugin
 
         public override void InitializeVirtual()
         {
+            // These just bind functions to menu objects... not much to really understand
             TweakBool("SYSTEM ENABLED", Manager.GetConfig<bool>("Enabled"), (value) =>
             {
                 Manager.SetConfig("Enabled", value);
@@ -43,14 +36,9 @@ namespace SpectrumTestPlugin
             {
                 Manager.SetConfig("LogToConsole", value);
             }, "Log all messages to the debug console (if visible).\n[FF0000]Requires game restart.[-]");
-
-            TweakEnum<Language>("Language"
-                               , () => Language.English
-                               , (units) => { }
-                               , displayNames);
-
         }
-
+        
+        // I assume this gets called when some one leaves the setting menu?
         public override void OnPanelPop()
         {
            
