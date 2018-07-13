@@ -51,11 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LanguageMenu.cs" />
-    <Compile Include="UI\OptionsSubmenu\MainOptionsSubmenuButton.cs" />
-    <Compile Include="UI\OptionsSubmenu\OptionsSubmenuButton.cs" />
-    <Compile Include="UI\OptionsSubmenu\PauseOptionsSubmenuButton.cs" />
-    <Compile Include="UI\SpectrumMenu.cs" />
     <Compile Include="SpectrumSettingsMenu.cs" />
+    <Compile Include="UI\SpectrumMenu.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Manu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

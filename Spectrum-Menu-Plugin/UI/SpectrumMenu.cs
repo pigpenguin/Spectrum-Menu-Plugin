@@ -1,4 +1,7 @@
 ﻿using Spectrum.API.Interfaces.Systems;
+using Spectrum_Menu_Plugin;
+using System;
+using System.Collections.Generic;
 
 namespace SpectrumTestPlugin.UI
 {
@@ -20,12 +23,12 @@ namespace SpectrumTestPlugin.UI
         {
             Manager = manager;
         }
-
+        
         public override void InitializeVirtual()
         {
 
         }
-
+        
         public override void OnPanelPop()
         {
             
