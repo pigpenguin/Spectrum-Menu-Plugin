@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace SpectrumTestPlugin.UI
 {
-    public abstract class PluginMenu : SuperMenu
+    public class PluginMenu : SuperMenu
     {
         public override string MenuTitleName_ => "[NAME GOES HERE]";
         public override string Name_ => "[MENU BUTTON TEXT]";
