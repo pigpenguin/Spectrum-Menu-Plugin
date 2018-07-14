@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C18ED8D7-5579-4C3B-8A60-6C673E7BECA3}</ProjectGuid>
+    <ProjectGuid>{4CA66991-5E83-4F50-A800-F22064851EE5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Spectrum_Menu_Plugin</RootNamespace>
-    <AssemblyName>Spectrum-Menu-Plugin</AssemblyName>
+    <RootNamespace>Helper</RootNamespace>
+    <AssemblyName>Helper</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\Spectrum\Spectrum.API\bin\Release\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="JsonFx">
-      <HintPath>..\Spectrum\Spectrum.API\bin\Release\JsonFx.dll</HintPath>
-    </Reference>
     <Reference Include="Spectrum.API">
-      <HintPath>..\Spectrum\Spectrum.API\bin\Release\Spectrum.API.dll</HintPath>
+      <HintPath>..\..\Scenedumper\spectrum\Spectrum.API\bin\Release\Spectrum.API.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,18 +39,10 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\Spectrum\Spectrum.API\bin\Release\UnityEngine.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\MenuData.cs" />
-    <Compile Include="UI\MenuItem.cs" />
-    <Compile Include="UI\PluginMenu.cs" />
-    <Compile Include="Util.cs" />
-    <Compile Include="Manu.cs" />
+    <Compile Include="SettingHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

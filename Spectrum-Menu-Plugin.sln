@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectrum-Menu-Plugin", "Spectrum-Menu-Plugin\Spectrum-Menu-Plugin.csproj", "{C18ED8D7-5579-4C3B-8A60-6C673E7BECA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{4CA66991-5E83-4F50-A800-F22064851EE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C18ED8D7-5579-4C3B-8A60-6C673E7BECA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C18ED8D7-5579-4C3B-8A60-6C673E7BECA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C18ED8D7-5579-4C3B-8A60-6C673E7BECA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA66991-5E83-4F50-A800-F22064851EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA66991-5E83-4F50-A800-F22064851EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA66991-5E83-4F50-A800-F22064851EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA66991-5E83-4F50-A800-F22064851EE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

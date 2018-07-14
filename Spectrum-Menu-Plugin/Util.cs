@@ -13,5 +13,10 @@ namespace SpectrumTestPlugin
             }
             return null;
         }
+
+        public static string RequiresRestart(string description)
+        {
+            return description + "\n[FF0000]Requires game restart.[-]";
+        }
     }
 }

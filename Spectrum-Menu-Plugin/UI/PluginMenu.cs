@@ -3,6 +3,7 @@ using Spectrum.API.IPC;
 using Spectrum_Menu_Plugin;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace SpectrumTestPlugin.UI
 {
@@ -16,7 +17,7 @@ namespace SpectrumTestPlugin.UI
         public MenuData Data { get; private set; }
         public String Source { get; private set; }
 
-        public override bool DisplayInMenu(bool isPauseMenu) => isPauseMenu;
+        public override bool DisplayInMenu(bool isPauseMenu) => true;
 
         public PluginMenu()
         {
@@ -38,14 +39,9 @@ namespace SpectrumTestPlugin.UI
             Source = ipcname;
         }
 
-        public void SetData(MenuData data)
+        public void SetState(MenuData data)
         {
             Data = data;
-        }
-
-        private T GetData<T>(String name)
-        {
-            return Data.Get<T>(name);
         }
 
         public Action<T> DataReporter<T>(String name)
@@ -60,6 +56,7 @@ namespace SpectrumTestPlugin.UI
 
         public override void InitializeVirtual()
         {
+            Console.WriteLine("Initialize called!");
             foreach (var item in Layout)
             {
                 RenderItem(item);
@@ -68,7 +65,8 @@ namespace SpectrumTestPlugin.UI
 
         private void RenderItem(MenuItem item)
         {
-            var type        = item.Get<Type>("type");
+            Console.WriteLine("Attempting to render item");
+            var type        = item["type"];
             var name        = item.Get<string>("name");
             var description = item.Get<string>("description");
 
@@ -77,7 +75,8 @@ namespace SpectrumTestPlugin.UI
 
             if (type == typeof(bool))
             {
-                TweakBool(name, false, DataReporter<bool>(name), description);
+                Console.WriteLine("Hey, it's a bool!");
+                TweakBool(name, Data.Get<bool>(name), DataReporter<bool>(name), description);
             }
 
             if (type == typeof(int))
@@ -87,20 +86,20 @@ namespace SpectrumTestPlugin.UI
 
             if (type == typeof(float))
             {
-                TweakFloat(name, 0, item.Get<float>("min"), item.Get<float>("max"), Data.Get<float>(name), DataReporter<float>(name), description);
+                TweakFloat(name, Data.Get<float>(name), item.Get<float>("min"), item.Get<float>("max"), item.Get<float>("default"), DataReporter<float>(name), description);
             }
-
-            if (type.IsEnum)
+            if (((Type)type).IsEnum)
             {
-                var m = typeof(PluginMenu).GetMethod("RenderEnum");
-                var g = m.MakeGenericMethod(type);
-                Object[] arguments = [item];
-                g.Invoke(this, arguments);
+                typeof(PluginMenu).GetMethod("RenderEnum" , BindingFlags.NonPublic | BindingFlags.Instance)
+                                  .MakeGenericMethod((Type)type)
+                                  .Invoke(this, new Object[] { item });
+
             }
         }
 
         private void RenderEnum<T>(MenuItem item)
         {
+            Console.WriteLine("We are trying to draw the enum menu ;_;");
             var name = item.Get<string>("name");
             var description = item.Get<string>("description");
             var displayList = item.Get<KeyValuePair<String,T>[]>("displayList");
@@ -108,7 +107,7 @@ namespace SpectrumTestPlugin.UI
             if (item.Get<bool>("restart"))
                 description = description + "\n[FF0000]Requires game restart.[-]";
 
-            TweakEnum(name, () => Data.Get<T>(name), DataReporter<T>(name),description,displayList);
+            TweakEnum(name, () => Data.Get<T>(name), DataReporter<T>(name), description, displayList);
         }
 
         public override void OnPanelPop()
